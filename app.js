@@ -14,7 +14,7 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 // create the Express app
 const app = express();
 
-
+app.use(express.static('public'))
 
 // create sequelize
 const sequelize = new Sequelize({
@@ -26,7 +26,10 @@ const sequelize = new Sequelize({
 app.use(morgan('dev'));
 
 // use cors as middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ["GET", "POST", "PUT", "DELETE", "HEAD", "PATCH"]
+}));
 
 // test db connection
 const testConnection = async () => {
