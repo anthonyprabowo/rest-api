@@ -1,7 +1,11 @@
 {
   "development": {
-    "storage": "fsjstd-restapi.db",
-    "dialect": "sqlite"
+    "username": "sql3677992",
+    "password": "WvD84HGYEH",
+    "database": "sql3677992",
+    "host": "sql3.freesqldatabase.com",
+    "port": 3306,
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -11,7 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "storage": "fsjstd-restapi.db",
-    "dialect": "sqlite"
+    "username": "sql3677992",
+    "password": "WvD84HGYEH",
+    "database": "sql3677992",
+    "host": "sql3.freesqldatabase.com",
+    "port": 3306,
+    "dialect": "mysql"
   }
 }
