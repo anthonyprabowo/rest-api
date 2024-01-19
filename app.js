@@ -7,6 +7,7 @@ const Sequelize = require('sequelize');
 const userRoute = require('./routes/userRoute');
 const coursesRoute = require('./routes/coursesRoute');
 const cors = require('cors');
+const path = require('path');
 
 // variable to enable global error logging
 const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'true';
@@ -14,7 +15,7 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 // create the Express app
 const app = express();
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // create sequelize
 const sequelize = new Sequelize({
@@ -58,11 +59,8 @@ app.use('/api/users', userRoute);
 // get courses route
 app.use('/api/courses', coursesRoute);
 
-// send 404 if no other route matched
-app.use((req, res) => {
-  res.status(404).json({
-    message: 'Route Not Found',
-  });
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname , 'public', 'index.html'));
 });
 
 // setup a global error handler
